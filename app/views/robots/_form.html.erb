@@ -1,0 +1,27 @@
+<%= form_for @robot do |robotForm| %>
+	<% if @robot.errors.any? %>
+		<div id = "error_explanation">
+			<h2><%= pluralize(@robot.errors.count, "error") %>
+				prohibited this robot from being added:</h2>
+			<ul>
+				<% @robot.errors.full_messages.each do |errorMessage| %>
+					<li><%= errorMessage %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<p>
+		<%= robotForm.label :name %> <br>
+		<%= robotForm.text_field :name %>
+	</p>
+	
+	<p>
+		<%= robotForm.label :description %> <br>
+		<%= robotForm.text_area :description %>
+	</p>
+	
+	<p>
+		<%= robotForm.submit %>
+	</p>
+<% end %>

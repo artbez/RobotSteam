@@ -1,0 +1,20 @@
+<p>
+	<strong>Name:</strong>
+	<%= @curRobot.name %>
+</p>
+
+<p>
+	<strong>Description:</strong>
+	<%= @curRobot.description %>
+</p>
+
+<%= link_to 'Edit robot information', edit_robot_path(@curRobot) %>
+
+<br>
+
+<%= link_to 'Delete robot', robot_path(@curRobot), 
+		method: :delete, data: { confirm: 'Are you sure?' } %> 
+		
+<br>
+
+<%= link_to 'Back to robot list', robots_path %>

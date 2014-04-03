@@ -1,0 +1,21 @@
+<h1>List of robots:</h1>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>First added</th>
+		<th>Last updated</th>
+	</tr>
+	
+	<% @robots.each do |curRobot| %>
+		<tr>
+			<td><%= link_to curRobot.name, robot_path(curRobot) %> </td>
+			<td><%= curRobot.created_at.to_s(:dayFormat) %></td>
+			<td><%= curRobot.updated_at.to_s(:dayFormat) %></td>
+		</tr>
+	<% end %>
+</table>
+
+<br>
+
+<%= link_to 'Add new robot', new_robot_path %>
