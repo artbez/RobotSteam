@@ -8,6 +8,15 @@
 	<%= @curRobot.description %>
 </p>
 
+<p>
+	<strong>Photo:</strong>
+	<% if @curRobot.photoPath == nil %>
+		<i><%= 'no photo' %></i>
+	<% else %>
+		<%= image_tag(@curRobot.photoPath) %>
+	<% end %>
+</p>
+
 <%= link_to 'Edit robot information', edit_robot_path(@curRobot) %>
 
 <br>

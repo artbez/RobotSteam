@@ -11,11 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+require 'pathname'
+
 ActiveRecord::Schema.define(version: 20140403101446) do
 
   create_table "robots", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "photoPath"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

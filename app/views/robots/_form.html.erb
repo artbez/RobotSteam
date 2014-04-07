@@ -22,6 +22,10 @@
 	</p>
 	
 	<p>
-		<%= robotForm.submit %>
+		<%= robotForm.file_field :photo %>
+	</p>
+	
+	<p>
+		<%= robotForm.submit 'Save robot' %>
 	</p>
 <% end %>
