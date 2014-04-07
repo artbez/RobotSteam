@@ -40,7 +40,7 @@ class RobotsController < ApplicationController
 	
 	def destroy
 		@curRobot = Robot.find(params[:id])
-		if (@curRobot.photoPath != '')
+		if (@curRobot.photoPath != nil)
 			File.delete(@curRobot.photoPath)
 		end
 		@curRobot.destroy
