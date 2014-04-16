@@ -4,7 +4,15 @@ Steam::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :robots
+  resources :robots do
+	member do
+		get 'orders'
+	end
+	resources :orders
+  end
+  
+  resources :orders
+
   root 'welcome#index'
 
   # Example of regular route:

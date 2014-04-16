@@ -11,9 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-require 'pathname'
+ActiveRecord::Schema.define(version: 20140415180415) do
 
-ActiveRecord::Schema.define(version: 20140403101446) do
+  create_table "orders", force: true do |t|
+    t.integer  "robot_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["robot_id"], name: "index_orders_on_robot_id"
 
   create_table "robots", force: true do |t|
     t.string   "name"

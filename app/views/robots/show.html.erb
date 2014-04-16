@@ -17,13 +17,25 @@
 	<% end %>
 </p>
 
+<%= form_for ([@curRobot, @curRobot.orders.build]) do |orderForm| %>
+	<p>
+		<%= orderForm.submit %>
+	</p>
+<% end %>
+
+<%= link_to 'List of orders of current robot', orders_robot_path(@curRobot) %>
+
+<br> 
+<br>
+
 <%= link_to 'Edit robot information', edit_robot_path(@curRobot) %>
 
+<br>
 <br>
 
 <%= link_to 'Delete robot', robot_path(@curRobot), 
 		method: :delete, data: { confirm: 'Are you sure?' } %> 
 		
-<br>
+<br><br>
 
 <%= link_to 'Back to robot list', robots_path %>

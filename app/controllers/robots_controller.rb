@@ -1,4 +1,5 @@
 Time::DATE_FORMATS[:dayFormat] = "%d.%m.%Y"
+Time::DATE_FORMATS[:minuteFormat] = "%d.%m.%Y %H:%M:%S"
 
 class RobotsController < ApplicationController
 	def new
@@ -45,6 +46,10 @@ class RobotsController < ApplicationController
 		end
 		@curRobot.destroy
 		redirect_to robots_path
+	end
+	
+	def orders
+		@curRobot = Robot.find(params[:id])
 	end
 	
 	private

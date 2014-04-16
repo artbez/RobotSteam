@@ -1,0 +1,14 @@
+<h1>List of orders: </h1>
+
+<table>
+	<tr>
+		<td>Ordering time:</td>
+	</tr>
+	<% @curRobot.orders.each do |order| %>
+		<tr>
+			<td><%= order.created_at.to_s(:minuteFormat) %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back to robot', robot_path(@curRobot) %>
