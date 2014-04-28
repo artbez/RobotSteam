@@ -12,7 +12,20 @@ Steam::Application.routes.draw do
   end
   
   resources :orders
-
+ 
+  resources :users do
+	member do
+		get 'orders'
+	end
+	resources :orders
+  end
+  
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signup', to: 'users#new', via: 'get'
+  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
+  
+  
   root 'welcome#index'
 
   # Example of regular route:

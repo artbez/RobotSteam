@@ -1,0 +1,57 @@
+<div class="center hero-unit"> 
+<p>
+	<strong>Login:</strong>
+	<%= @user.login %>
+</p>
+
+<p>
+	<strong>Password:</strong>
+	<%= @user.password %>
+</p>
+
+<p>
+	<strong>About me:</strong>
+	<%= @user.about %>
+</p>
+
+<p>
+	<strong>Photo:</strong>
+	<% if @user.photoPath == nil %>
+		<i><%= 'no photo' %></i>
+	<% else %>
+		<%= image_tag(@user.photoPath) %>
+	<% end %>
+</p>
+
+<br> 
+<br>
+
+<% if signed_in? && (@user.id == current_user.id || current_user.userType == 'admin') %> 
+
+	<%= link_to 'Edit user information', edit_user_path(@user) %>
+
+	<br><br>
+	
+	<%= link_to 'Orders of current user', orders_user_path(@user) %>
+	
+	<br><br>
+
+<% end %>
+
+<% if signed_in? && current_user.userType == 'admin' %> 
+
+	<%= link_to 'Ban user', user_path(@user), 
+			method: :delete, data: { confirm: 'Are you sure?' } %> 
+			
+	<br><br>
+
+	<% if @user.userType != 'admin' %>
+		<%= link_to 'Make this user admin', @user.userType = 'admin' %>
+	<% end %>
+	
+	<br><br>
+
+<% end %>
+
+<%= link_to 'Back to robot list', users_path %>
+</div>

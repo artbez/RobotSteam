@@ -6,6 +6,7 @@ class CreateRobots < ActiveRecord::Migration
       t.string :name
       t.text :description
 	  t.string :photoPath
+	  t.references :user, index: true
 
       t.timestamps
     end

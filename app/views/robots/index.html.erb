@@ -19,7 +19,9 @@
 
 <br>
 
-<%= link_to 'Add new robot', new_robot_path %>
+<% if signed_in? && current_user.userType == 'admin' %>
+	<%= link_to 'Add new robot', new_robot_path %>
+<% end %>
 
 <br>
 

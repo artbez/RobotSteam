@@ -9,6 +9,7 @@ class RobotsController < ApplicationController
 	def create
 		@newRobot = Robot.new(robot_params)
 		if @newRobot.save
+			@newRobot.user = @current_user
 			uploadPhoto(@newRobot)
 			redirect_to @newRobot
 		else

@@ -1,22 +1,29 @@
 <div class="center hero-unit"> 
-<h1>List of orders:</h1>
 
-<table>
-	<tr>
-		<th>Robot name</th>
-		<th>Ordering time</th>
-	</tr>
-	
-	<% @orders.each do |order| %>
+<% if signed_in? && current_user.userType == 'admin' %>
+	<h1>List of orders:</h1>
+
+	<table>
 		<tr>
-			<td><%= link_to order.robot.name, robot_path(order.robot) %> </td>
-			<td><%= order.created_at.to_s(:dayFormat) %></td>
+			<th>Robot name</th>
+			<th>Ordering time</th>
 		</tr>
-	<% end %>
-</table>
+		
+		<% @orders.each do |order| %>
+			<tr>
+				<td><%= link_to order.robot.name, robot_path(order.robot) %> </td>
+				
+				<td><%= order.created_at.to_s(:dayFormat) %></td>
+			</tr>
+		<% end %>
+	</table>
 
-<br>
+	<br>
 
 
-<%= link_to 'Main page', controller: 'welcome' %>
+	<%= link_to 'Main page', controller: 'welcome' %>
+<% else %>
+	<h2>You are not allowed to watch this page.</h2>
+<% end %>
+
 </div>

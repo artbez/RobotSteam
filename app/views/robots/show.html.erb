@@ -18,26 +18,34 @@
 	<% end %>
 </p>
 
-<%= form_for ([@curRobot, @curRobot.orders.build]) do |orderForm| %>
-	<p>
-		<%= orderForm.submit %>
-	</p>
+<% if signed_in? %>
+
+	<%= form_for ([@curRobot, @curRobot.orders.build]) do |orderForm| %>
+		<p>
+			<%= orderForm.submit %>
+		</p>
+	<% end %>
+
 <% end %>
 
-<%= link_to 'List of orders of current robot', orders_robot_path(@curRobot) %>
+<% if signed_in? && current_user.userType == 'admin' %>
 
-<br> 
-<br>
+	<%= link_to 'List of orders of current robot', orders_robot_path(@curRobot) %>
 
-<%= link_to 'Edit robot information', edit_robot_path(@curRobot) %>
+	<br> 
+	<br>
 
-<br>
-<br>
+	<%= link_to 'Edit robot information', edit_robot_path(@curRobot) %>
 
-<%= link_to 'Delete robot', robot_path(@curRobot), 
-		method: :delete, data: { confirm: 'Are you sure?' } %> 
-		
-<br><br>
+	<br>
+	<br>
 
+	<%= link_to 'Delete robot', robot_path(@curRobot), 
+			method: :delete, data: { confirm: 'Are you sure?' } %> 
+			
+	<br><br>
+
+<% end %>
+	
 <%= link_to 'Back to robot list', robots_path %>
 </div>

@@ -1,0 +1,45 @@
+<div class="center hero-unit"> 
+
+<% if signed_in? %>
+	<h2>You are now signed in.</h2>
+<% else %>
+
+	<h1>Sign up</h1>
+	
+	<%= form_for @user do |userForm| %>
+		<% if @user.errors.any? %>
+			<div id = "error_explanation">
+				<h2><%= pluralize(@user.errors.count, "error") %>
+					prohibited this user from being added:</h2>
+				<ul>
+					<% @user.errors.full_messages.each do |errorMessage| %>
+						<li><%= errorMessage %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<p>
+			<%= userForm.label :login %> <br>
+			<%= userForm.text_field :login %>
+		</p>
+		
+		<p>
+			<%= userForm.label :password %> <br>
+			<%= userForm.text_field :password %>
+		</p>
+		
+		<p>
+			<%= userForm.label :about %> <br>
+			<%= userForm.text_area :about %>
+		</p>
+		
+		<p>
+			<%= userForm.file_field :photo %>
+		</p>
+		
+		<p>
+			<%= userForm.submit 'End registration', class: 'btn btn-large btn-primary' %>
+		</p>
+	<% end %>
+<% end %>

@@ -1,3 +1,5 @@
+<% if signed_in? && current_user.userType == 'admin' %>
+
 <h1>List of orders: </h1>
 
 <table>
@@ -12,3 +14,7 @@
 </table>
 
 <%= link_to 'Back to robot', robot_path(@curRobot) %>
+
+<% else %>
+	<h2>You are not allowed to watch this page.</h2>
+<% end %>

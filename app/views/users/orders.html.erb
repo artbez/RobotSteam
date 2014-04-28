@@ -1,0 +1,27 @@
+<div class="center hero-unit"> 
+
+
+<% if signed_in? && current_user.id == @user.id %>
+
+<h1>List of orders: </h1>
+
+<table>
+	<tr>
+		<th>Robot:</th>
+		<th>Ordering time:</th>
+	</tr>
+	<% @user.orders.each do |order| %>
+		<tr>
+			<td><%= link_to order.robot.name, robot_path(order.robot) %></td>
+			<td><%= order.created_at.to_s(:minuteFormat) %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back to user', user_path(@user) %>
+
+<% else %>
+	<h2>You are not allowed to watch this page.</h2>
+<% end %>
+
+</div>
